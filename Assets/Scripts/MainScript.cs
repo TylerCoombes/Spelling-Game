@@ -35,7 +35,7 @@ public class MainScript : MonoBehaviour {
     void Start () {
 
 		platform = Application.platform;
-		drawArea = new Rect(-500, 0, Screen.width, Screen.height);
+		drawArea = new Rect(-565, -65, Screen.width, Screen.height);
 
 		//Load pre-made gestures
 		TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet/10-stylus-MEDIUM/");
@@ -105,9 +105,6 @@ public class MainScript : MonoBehaviour {
         GUIStyle myButtonStyle = new GUIStyle(GUI.skin.button);
         myButtonStyle.fontSize = 50;
 
-        //GUI.Box(drawArea, "Draw Area", myButtonStyle);
-
-        GUI.Label(new Rect(800, 10, 300, 50), "Draw Area", myButtonStyle);
 
         if (GUI.Button(new Rect(830, 1000, 300, 70), "Recognize", myButtonStyle)) {
 
@@ -130,7 +127,7 @@ public class MainScript : MonoBehaviour {
 			}
 		}
 
-		GUI.Label(new Rect(Screen.width - 200, 150, 70, 30), "Add as: ");
+		/*GUI.Label(new Rect(Screen.width - 200, 150, 70, 30), "Add as: ");
 		newGestureName = GUI.TextField(new Rect(Screen.width - 150, 150, 100, 30), newGestureName);
 
 		if (GUI.Button(new Rect(Screen.width - 50, 150, 50, 30), "Add") && points.Count > 0 && newGestureName != "") {
@@ -144,6 +141,6 @@ public class MainScript : MonoBehaviour {
 			trainingSet.Add(new Gesture(points.ToArray(), newGestureName));
 
 			newGestureName = "";
-		}
+		}*/
 	}
 }

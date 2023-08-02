@@ -43,6 +43,6 @@ public class RandomLetter : MonoBehaviour
         GUIStyle myButtonStyle = new GUIStyle(GUI.skin.button);
         myButtonStyle.fontSize = 50;
 
-        GUI.TextArea(new Rect(700, 70, 500, 50), "Can You Draw " + randomChar + "?", myButtonStyle);
+        GUI.TextArea(new Rect(400, 230, 500, 50), "Can You Draw " + randomChar + "?", myButtonStyle);
     }
 }
