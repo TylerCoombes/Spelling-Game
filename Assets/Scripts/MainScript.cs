@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 using PDollarGestureRecognizer;
+using UnityEngine.UI;
 
 public class MainScript : MonoBehaviour {
 
@@ -30,6 +31,7 @@ public class MainScript : MonoBehaviour {
 	private string message;
 	public bool recognized;
 	private string newGestureName = "";
+	public Button recogniseButton;
 
 
     void Start () {
@@ -99,14 +101,15 @@ public class MainScript : MonoBehaviour {
 		}
 	}
 
-	public void OnGUI() 
+	/*public void OnGUI() 
 	{
 
         GUIStyle myButtonStyle = new GUIStyle(GUI.skin.button);
         myButtonStyle.fontSize = 50;
 
 
-        if (GUI.Button(new Rect(830, 1000, 300, 70), "Recognize", myButtonStyle)) {
+        if (GUI.Button(new Rect(830, 1000, 300, 70), "Recognize", myButtonStyle))
+		{
 
 			recognized = true;
 
@@ -127,7 +130,7 @@ public class MainScript : MonoBehaviour {
 			}
 		}
 
-		/*GUI.Label(new Rect(Screen.width - 200, 150, 70, 30), "Add as: ");
+		GUI.Label(new Rect(Screen.width - 200, 150, 70, 30), "Add as: ");
 		newGestureName = GUI.TextField(new Rect(Screen.width - 150, 150, 100, 30), newGestureName);
 
 		if (GUI.Button(new Rect(Screen.width - 50, 150, 50, 30), "Add") && points.Count > 0 && newGestureName != "") {
@@ -141,6 +144,27 @@ public class MainScript : MonoBehaviour {
 			trainingSet.Add(new Gesture(points.ToArray(), newGestureName));
 
 			newGestureName = "";
-		}*/
-	}
+		}
+	}*/
+
+	public void Recognise()
+	{
+        recognized = true;
+
+        Gesture candidate = new Gesture(points.ToArray());
+
+        Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
+
+        message = gestureResult.GestureClass + " " + gestureResult.Score;
+        Debug.Log("gestureResult =" + message);
+
+        if (gestureResult.GestureClass == letter.randomChar.ToString())
+        {
+            Debug.Log("YAY!!!!");
+        }
+        else
+        {
+            Debug.Log("NOOO!!!");
+        }
+    }
 }
